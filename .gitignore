@@ -1,5 +1,14 @@
-node_modules
+# Node modules y compilados
+node_modules/
+dist/
 
+# Archivos sensibles
+/data/credentials.enc.json
+/data/salt.bin
+
+# Backups locales
+*.sbk
+
+# Archivos del entorno
 .env
-
-data/*
+.DS_Store
