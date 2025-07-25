@@ -27,9 +27,25 @@ jobs:
       - name: 📦 Package binary with pkg
         run: npx pkg . --targets node18-linux-x64 --output build/securebot-linux
 
-      - name: 🚀 Upload Release Binary
+      - name: 📦 Install fpm
+        run: |
+          sudo apt-get update
+          sudo apt-get install ruby ruby-dev build-essential -y
+          sudo gem install --no-document fpm
+
+      - name: 🏗️ Generate .deb package
+        run: |
+          fpm -s dir -t deb \
+            -n securebot \
+            -v 1.0.0 \
+            --prefix /usr/local/bin \
+            build/securebot-linux=securebot
+
+      - name: 🚀 Upload Release Assets
         uses: softprops/action-gh-release@v1
         with:
-          files: build/securebot-linux
+          files: |
+            build/securebot-linux
+            securebot_1.0.0_amd64.deb
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
