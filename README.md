@@ -2,8 +2,8 @@
 
 Un gestor de contraseñas en la terminal, **seguro**, **portable** y hecho para devs.
 
-![badge](https://img.shields.io/github/v/release/MSlegro/securebot-cli?label=version&style=flat-square)
-![badge](https://img.shields.io/github/actions/workflow/status/MSlegro/securebot-cli/release.yml?label=build&style=flat-square)
+![badge](https://img.shields.io/github/v/release/MSlegro/secure-bot-cli?label=version&style=flat-square)
+![badge](https://img.shields.io/github/actions/workflow/status/MSlegro/secure-bot-cli/release.yml?label=build&style=flat-square)
 
 ---
 
