@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { Command } from 'commander';
 import { addCommand, exportCommand, getCommand, importCommand, initCommand, listCommand } from './commands';
 

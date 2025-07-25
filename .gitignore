@@ -1,6 +1,7 @@
 # Node modules y compilados
 node_modules/
 dist/
+build/
 
 # Archivos sensibles
 /data/credentials.enc.json
