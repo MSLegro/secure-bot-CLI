@@ -2,19 +2,19 @@
 
 set -e
 
-REPO="MSlegro/securebot-cli"
-VERSION="latest"
-DEB_NAME="securebot_1.0.0_amd64.deb"
-DEB_URL="https://github.com/$REPO/releases/download/v1.0.0/$DEB_NAME"
+REPO="MSlegro/secure-bot-cli"
+VERSION=$(curl -s https://api.github.com/repos/$REPO/releases/latest | grep tag_name | cut -d '"' -f4)
+DEB_NAME="securebot_${VERSION}_amd64.deb"
+DEB_URL="https://github.com/$REPO/releases/download/$VERSION/$DEB_NAME"
 
 TMP_DEB="/tmp/$DEB_NAME"
 
-echo "⬇️  Descargando paquete .deb desde GitHub Releases..."
+echo "⬇️  Descargando paquete .deb desde GitHub Releases ($VERSION)..."
 curl -sL "$DEB_URL" -o "$TMP_DEB"
 
 echo "📦 Instalando paquete..."
 sudo dpkg -i "$TMP_DEB"
 
-echo "✅ SecureBot instalado correctamente."
+echo "✅ SecureBot instalado o actualizado correctamente."
 echo "🧪 Verificando versión:"
 securebot --version
