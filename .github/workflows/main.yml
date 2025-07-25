@@ -1,0 +1,35 @@
+name: Build & Release Binary
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🧾 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🛠 Compile TypeScript
+        run: npm run build
+
+      - name: 📦 Package binary with pkg
+        run: npx pkg . --targets node18-linux-x64 --output build/securebot-linux
+
+      - name: 🚀 Upload Release Binary
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/securebot-linux
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
