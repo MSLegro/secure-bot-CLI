@@ -2,7 +2,7 @@
 
 set -e
 
-REPO="MSlegro/secure-bot-CLI"
+REPO="MSlegro/secure-bot-cli"
 VERSION=$(curl -s https://api.github.com/repos/$REPO/releases/latest | grep tag_name | cut -d '"' -f4)
 DEB_NAME="securebot_${VERSION}_amd64.deb"
 DEB_URL="https://github.com/$REPO/releases/download/$VERSION/$DEB_NAME"
