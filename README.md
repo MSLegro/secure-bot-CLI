@@ -12,13 +12,13 @@ Un gestor de contraseñas en la terminal, **seguro**, **portable** y hecho para 
 ### 📦 Usando el instalador automático
 
 ```bash
-curl -sL https://raw.githubusercontent.com/MSlegro/secure-bot-cli/main/install.sh | bash
+curl -sL https://raw.githubusercontent.com/MSlegro/secure-bot-cli/master/install.sh | bash
 ```
 
 ### 📦 O manual con `.deb`
 
 ```bash
-curl -sL https://github.com/MSlegro/secure-bot-cli/releases/latest/download/securebot_1.0.1_amd64.deb -o securebot.deb
+curl -sL https://github.com/MSlegro/secure-bot-cli/releases/latest/download/securebot_1.0.0_amd64.deb -o securebot.deb
 sudo dpkg -i securebot.deb
 ```
 
