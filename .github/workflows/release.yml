@@ -35,17 +35,23 @@ jobs:
 
       - name: 🏗️ Generate .deb package
         run: |
+          VERSION=${GITHUB_REF_NAME#v}
           fpm -s dir -t deb \
             -n securebot \
-            -v 1.0.0 \
+            -v "$VERSION" \
+            --architecture amd64 \
             --prefix /usr/local/bin \
             build/securebot-linux=securebot
+
+      - name: 🏷 Rename .deb file for GitHub Release
+        run: |
+          mv securebot_${GITHUB_REF_NAME#v}_amd64.deb securebot_${GITHUB_REF_NAME}_amd64.deb
 
       - name: 🚀 Upload Release Assets
         uses: softprops/action-gh-release@v1
         with:
           files: |
             build/securebot-linux
-            securebot_1.0.0_amd64.deb
+            securebot_${{ github.ref_name }}_amd64.deb
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
