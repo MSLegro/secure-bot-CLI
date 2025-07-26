@@ -1,11 +1,21 @@
 import crypto from 'crypto';
 import argon2 from 'argon2';
 import fs from 'fs';
+import os from 'os';
+import path from 'path';
 
 const algorithm = 'aes-256-cbc';
-const SALT_FILE = 'data/salt.bin';
+const APP_DIR = path.join(os.homedir(), '.securebot');
+const SALT_FILE = path.join(APP_DIR, 'salt.bin');
+
+function ensureAppDirExists(): void {
+  if (!fs.existsSync(APP_DIR)) {
+    fs.mkdirSync(APP_DIR, { recursive: true });
+  }
+}
 
 function generateSalt(): Buffer {
+  ensureAppDirExists();
   const salt = crypto.randomBytes(16);
   fs.writeFileSync(SALT_FILE, salt);
   return salt;

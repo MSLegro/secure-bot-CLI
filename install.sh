@@ -17,11 +17,8 @@ if [ ! -s "$TMP_DEB" ]; then
   exit 1
 fi
 
-#echo "📦 Instalando paquete..."
-#sudo dpkg -i "$TMP_DEB"
-
-echo "✅ Archivo descargado en: $TMP_DEB"
-file "$TMP_DEB"
+echo "📦 Instalando paquete..."
+sudo dpkg -i "$TMP_DEB"
 
 echo "✅ SecureBot instalado o actualizado correctamente."
 echo "🧪 Verificando versión:"
